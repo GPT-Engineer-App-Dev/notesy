@@ -7,7 +7,9 @@ function NoteCreation() {
   const navigate = useNavigate();
 
   const handleSave = () => {
-    // Save the note logic here
+    const newNote = { id: Date.now(), title, content };
+    const existingNotes = JSON.parse(localStorage.getItem("notes")) || [];
+    localStorage.setItem("notes", JSON.stringify([...existingNotes, newNote]));
     navigate("/");
   };
 
